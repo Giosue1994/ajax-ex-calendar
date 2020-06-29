@@ -8,9 +8,7 @@ $(document).ready(function() {
           success: function(data) {
             var date = data.response;
 
-            var days = daysInMonth( moment(-24) );
-            console.log(days);
-
+            singleMonth();
           },
 
           error: function() {
@@ -22,25 +20,32 @@ $(document).ready(function() {
 
 });
 
-// funzione che conta i giorni in un mese
+// funzione che conta i giorni di un mese
 function daysInMonth(month) {
   var count = moment().month(month).daysInMonth();
 
   var days = [];
   for (var i = 1; i < count+1; i++) {
-    days.push(moment().month(month).date(i));
+    days.push(moment().month(month).date(i).format("D MMMM"));
   }
 
   return days;
 }
 
-// function singleMonth() {
-//
-//   var source = $("#entry-template").html();
-//   var template = Handlebars.compile(source);
-//
-//   var context = {};
-//   var html = template(context);
-//
-//   $('.container').append(html);
-// }
+function singleMonth() {
+
+  var source = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+  var days = daysInMonth( moment(-24) );
+
+  for (var i = 0; i < days.length; i++) {
+    $('.day').text(days[i]);
+
+    var context = {};
+    var html = template(context);
+
+
+    $('.container ul').append(html);
+  }
+
+}
