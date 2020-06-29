@@ -7,8 +7,8 @@ $(document).ready(function() {
 
           success: function(data) {
             var date = data.response;
-            
-            var days = daysInMonth( moment('2018-01').month() );
+
+            var days = daysInMonth( moment(-24) );
             console.log(days);
 
           },
