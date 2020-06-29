@@ -14,13 +14,19 @@
   <body>
 
     <div class="container">
-      <ul class="month">
+      <div id="current-month"></div>
+
+      <ul class="day-month">
 
       </ul>
     </div>
 
-    <script id="entry-template" type="text/x-handlebars-template">
-      <li class="day"></li>
+    <script id="month-template" type="text/x-handlebars-template">
+      <h2>{{ month }}</h2>
+    </script>
+
+    <script id="day-template" type="text/x-handlebars-template">
+      <li data-date="{{ completeDate }}" class="day">{{ day }}</li>
     </script>
 
     <script src="js/script.js">

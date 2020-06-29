@@ -6,6 +6,7 @@
 }
 
 .container {
-  width: 95%;
+  width: 80%;
   margin: auto;
+  background-color: burlywood;
 }

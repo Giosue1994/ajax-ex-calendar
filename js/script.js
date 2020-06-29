@@ -1,51 +1,62 @@
 $(document).ready(function() {
 
-  $.ajax(
-        {
-          url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
-          method: "GET",
 
-          success: function(data) {
-            var date = data.response;
+//   $.ajax(
+//         {
+//           url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
+//           method: "GET",
+//
+//           success: function(data) {
+//             var date = data.response;
+//           },
+//
+//           error: function() {
+//             alert("Errore");
+//           }
+//
+//         }
+//       );
+//
 
-            singleMonth();
-          },
-
-          error: function() {
-            alert("Errore");
-          }
-
-        }
-      );
+var dateStart = moment('2018-01-01');
+getdaysInMonth(dateStart);
 
 });
 
 // funzione che conta i giorni di un mese
-function daysInMonth(month) {
-  var count = moment().month(month).daysInMonth();
+function getdaysInMonth(day) {
+  var monthName = day.format('MMMM YYYY');
 
-  var days = [];
-  for (var i = 1; i < count+1; i++) {
-    days.push(moment().month(month).date(i).format("D MMMM"));
-  }
-
-  return days;
-}
-
-function singleMonth() {
-
-  var source = $("#entry-template").html();
+  var source = $("#month-template").html();
   var template = Handlebars.compile(source);
-  var days = daysInMonth( moment(-24) );
 
-  for (var i = 0; i < days.length; i++) {
-    $('.day').text(days[i]);
+  var context = {
+    month: monthName,
+  };
 
-    var context = {};
+  var html = template(context);
+  $('#current-month').append(html);
+
+  var daysInMonth = day.daysInMonth();
+
+  for (var i = 0; i < daysInMonth; i++) {
+    var nextDay = moment(day).add(i, 'd');
+
+    var dayMonth = nextDay.format('D MMMM');
+    var completeDate = nextDay.format('YYYY-MM-DD');
+
+
+    var source = $("#day-template").html();
+    var template = Handlebars.compile(source);
+
+    var context = {
+      day: dayMonth,
+      completeDate: completeDate
+    };
+
     var html = template(context);
-
-
-    $('.container ul').append(html);
+    $('.day-month').append(html);
   }
+
 
 }
