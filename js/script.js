@@ -103,35 +103,35 @@ function getdaysInMonth(day) {
 function holidays(dateStart) {
 
   $.ajax(
-        {
-          url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
-          method: "GET",
-          data: {
-            year: dateStart.year(),
-            month: dateStart.month()
-          },
+    {
+      url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
+      method: "GET",
+      data: {
+        year: dateStart.year(),
+        month: dateStart.month()
+      },
 
-          success: function(data) {
-            var holidays = data.response;
+      success: function(data) {
+        var holidays = data.response;
 
-            for (var i = 0; i < holidays.length; i++) {
-              var currentHoliday = holidays[i];
+        for (var i = 0; i < holidays.length; i++) {
+          var currentHoliday = holidays[i];
 
-              // assegno all'attributo la data che contiene la festività
-              var thisDayAttr = $('.day[data-date="' + currentHoliday.date + '"]');
+          // assegno all'attributo la data che contiene la festività
+          var thisDayAttr = $('.day[data-date="' + currentHoliday.date + '"]');
 
-              // aggiungo la classe per colorare i giorni festivi in rosso
-              thisDayAttr.addClass('holiday');
-              // Appendo il nome della festività
-              thisDayAttr.append(' - ' + currentHoliday.name);
-            }
-          },
-
-          error: function() {
-            alert("Errore");
-          }
-
+          // aggiungo la classe per colorare i giorni festivi in rosso
+          thisDayAttr.addClass('holiday');
+          // Appendo il nome della festività
+          thisDayAttr.append(' - ' + currentHoliday.name);
         }
-      );
+      },
+
+      error: function() {
+        alert("Errore");
+      }
+
+    }
+  );
 
 }

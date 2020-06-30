@@ -5,11 +5,18 @@
   box-sizing: border-box;
 }
 
+/* ________ REGOLE GENERALI ________ */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: sandybrown;
+}
+
 .container {
   width: 80%;
-  margin: auto;
+  margin: 20px auto;
   padding: 0 50px;
-
+  text-align: center;
+  font-weight: bold;
 }
 
 .holiday {
@@ -28,4 +35,34 @@
 #next
  {
   cursor: pointer;
+  font-size: 70px;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* container */
+#current-month {
+  font-size: 40px;
+  background-color: red;
+  color: white;
+  margin-bottom: 10px;
+  width: 630px;
+}
+
+.day {
+  border: 1px solid black;
+  padding: 20px 20px 150px;
+  background-color: white;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+}
+
+.day-month {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
