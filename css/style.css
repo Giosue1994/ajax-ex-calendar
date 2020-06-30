@@ -8,5 +8,24 @@
 .container {
   width: 80%;
   margin: auto;
-  background-color: burlywood;
+  padding: 0 50px;
+
+}
+
+.holiday {
+  color: red;
+}
+
+#current-month,
+#prev,
+#next
+ {
+  display: inline-block;
+  padding: 30px 20px;
+}
+
+#prev,
+#next
+ {
+  cursor: pointer;
 }

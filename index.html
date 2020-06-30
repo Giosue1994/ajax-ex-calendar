@@ -14,15 +14,24 @@
   <body>
 
     <div class="container">
+      <div id="prev">
+        << Previous
+      </div>
+
       <div id="current-month"></div>
+
+      <div id="next">
+        Next >>
+      </div>
 
       <ul class="day-month">
 
       </ul>
+
     </div>
 
     <script id="month-template" type="text/x-handlebars-template">
-      <h2>{{ month }}</h2>
+      <h1 data-current-month="">{{ month }}</h1>
     </script>
 
     <script id="day-template" type="text/x-handlebars-template">
